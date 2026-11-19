@@ -82,6 +82,9 @@
   .close{position:absolute;top:8px;right:10px;border:0;background:transparent;font-size:28px;line-height:1;cursor:pointer;color:#5a4f40}
   .scratch{position:relative;width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#e8dcc2}
   .scratch img,.scratch .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .scratch .cap{position:absolute;left:0;right:0;bottom:0;padding:48px 16px 18px;text-align:center;
+    background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;font:800 clamp(22px,6.5vw,30px)/1.15 "Fraunces",serif;
+    text-shadow:0 2px 8px rgba(0,0,0,.5)}
   .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
     background:repeating-linear-gradient(45deg,#f3e6c9 0 18px,#efdfbd 18px 36px);font-family:"Fraunces",serif;color:var(--red2)}
   .ph b{font-size:26px;display:block;margin-top:10px}
@@ -255,6 +258,7 @@
       img.src = photoUrl(d);
       img.onerror = ()=>{ img.replaceWith(placeholder(d)); };
       box.appendChild(img);
+      if (d === 0){ const cap=document.createElement("div"); cap.className="cap"; cap.textContent="You'll have to wait a bit more… 🎄"; box.appendChild(cap); }
     } else {
       box.appendChild(placeholder(d));
     }
